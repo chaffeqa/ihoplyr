@@ -24,6 +24,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "now-build": "next build",
     "start": "next start"
   }
 }
