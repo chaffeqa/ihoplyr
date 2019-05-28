@@ -2,17 +2,17 @@ import React from 'react';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import AudiotrackIcon from '@material-ui/icons/audiotrack';
+import AudiotrackIcon from '@material-ui/icons/Audiotrack';
 import MusicVideoIcon from '@material-ui/icons/MusicVideo';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import {NextComposed} from '../src/Link';
+// import DraftsIcon from '@material-ui/icons/Drafts';
+// import {NextComposed} from '../src/Link';
 import {IEntriesItem} from '../src/types.d';
 import IconButton from '@material-ui/core/IconButton';
-import MuiLink from '@material-ui/core/Link';
+// import MuiLink from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
