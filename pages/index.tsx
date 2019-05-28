@@ -40,8 +40,8 @@ function Index(props: any) {
   const title = guid ? `Item: ${guid}` : `Recent Playlists`
   return (
       <Container maxWidth="sm">
-        <Titlebar title={title} />
-        <Box my={6}>
+        {/*<Titlebar title={title} /> */}
+        <Box>
           {loading && (
             <LoadingBar />
           )}

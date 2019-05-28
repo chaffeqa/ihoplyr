@@ -11,10 +11,14 @@
     "@material-ui/core": "^4.0.1",
     "@material-ui/icons": "^4.0.1",
     "@material-ui/styles": "^4.0.1",
+    "@pwa/manifest": "^1.1.0",
+    "@pwa/manifest-icons": "^3.1.0",
     "@types/next": "^8.0.5",
     "@zeit/next-typescript": "^1.1.1",
     "clsx": "^1.0.2",
     "next": "^8.1.0",
+    "next-manifest": "^2.0.0",
+    "next-offline": "^4.0.1",
     "prop-types": "^15.7.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -24,9 +28,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "now-build": "next build",
-    "start": "next start",
     "now-build": "next build && next export -o dist",
+    "start": "next start",
     "now-dev": "next -p $PORT"
   }
 }

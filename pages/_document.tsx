@@ -3,6 +3,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 import flush from 'styled-jsx/server';
 import theme from '../src/theme';
+const appTitle = 'ihoplyr'
 
 class MyDocument extends Document {
   render() {
@@ -10,6 +11,21 @@ class MyDocument extends Document {
       <html lang="en" dir="ltr">
         <Head>
           <meta charSet="utf-8" />
+          <title>{appTitle}</title>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      		<link rel="mask-icon" href="/safari-pinned-tab.svg?v=ngGBw47L8y" color={theme.palette.primary.main} />
+      		<meta name="apple-mobile-web-app-title" content={appTitle} />
+      		<meta name="application-name" content={appTitle} />
+          <link rel="manifest" href="/static/manifest/manifest.json" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          
+          
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#950000" />
+          <meta name="msapplication-TileColor" content="#b91d47" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
             name="viewport"
