@@ -76,12 +76,12 @@ function SetItem({item}: ISubProps) {
         secondaryTypographyProps={{variant: 'body2', noWrap: true}}
       />
       {video && (
-        <IconButton color="secondary" component="a" edge="start" aria-label="Video" href={video.downloadUrl}>
+        <IconButton color="secondary" component="a" edge="start" aria-label="Video" rel="noopenter" href={video.downloadUrl}>
           <MusicVideoIcon />
         </IconButton>
       )}
       {audio && (
-        <IconButton color="primary" component="a" edge="end" aria-label="Audio" href={audio.downloadUrl}>
+        <IconButton color="primary" component="a" edge="end" aria-label="Audio" rel="noopenter" href={audio.downloadUrl}>
           <AudiotrackIcon />
         </IconButton>
       )}
