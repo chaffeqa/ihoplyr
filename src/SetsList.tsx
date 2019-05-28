@@ -69,7 +69,7 @@ function SetItem({item}: ISubProps) {
   const video = getVideo(item)
   return (
     <>
-    <ListItem disableGutters={true} >
+    <ListItem disableGutters={true}>
       <ListItemText
         primary={item.title}
         secondary={getSecondary(item).join(" - ")}
@@ -95,7 +95,7 @@ function SetsList(props: IProps) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} component="ol">
       <List component="nav">
       {props.items.map((item, i) => (
         <SetItem item={item} key={item.guid} />
