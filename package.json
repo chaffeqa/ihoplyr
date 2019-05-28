@@ -25,6 +25,8 @@
     "dev": "next",
     "build": "next build",
     "now-build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "now-build": "next build && next export -o dist",
+    "now-dev": "next -p $PORT"
   }
 }
