@@ -40,7 +40,7 @@ function Index(props: any) {
   // const title = guid ? `Item: ${guid}` : `Recent Playlists`
   return (
     <Container>
-      {(loading || true) && (
+      {(loading) && (
         <LoadingBar />
       )}
       <Container maxWidth="sm">
