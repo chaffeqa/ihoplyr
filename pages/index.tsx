@@ -37,14 +37,15 @@ function Index(props: any) {
     error = err
   }
   // console.dir(payload)
-  const title = guid ? `Item: ${guid}` : `Recent Playlists`
+  // const title = guid ? `Item: ${guid}` : `Recent Playlists`
   return (
+    <Container>
+      {(loading || true) && (
+        <LoadingBar />
+      )}
       <Container maxWidth="sm">
         {/*<Titlebar title={title} /> */}
         <Box>
-          {loading && (
-            <LoadingBar />
-          )}
           {payload && (
             <SetsList items={payload.entries} />
           )}
@@ -53,6 +54,7 @@ function Index(props: any) {
           )}
         </Box>
       </Container>
+    </Container>
   );
 }
 

@@ -13,7 +13,7 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <title>{appTitle}</title>
-          <meta name="Description" content={metaDescription}>
+          <meta name="Description" content={metaDescription} />
           <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       		<link rel="mask-icon" href="/safari-pinned-tab.svg?v=ngGBw47L8y" color={theme.palette.primary.main} />
       		<meta name="apple-mobile-web-app-title" content={appTitle} />
