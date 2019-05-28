@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -69,23 +69,22 @@ function SetItem({item}: ISubProps) {
   const video = getVideo(item)
   return (
     <>
-    <ListItem>
+    <ListItem disableGutters={true} >
       <ListItemText
         primary={item.title}
         secondary={getSecondary(item).join(" - ")}
+        secondaryTypographyProps={{variant: 'body2', noWrap: true}}
       />
-      <ListItemSecondaryAction>
-        {video && (
-          <IconButton component="a" edge="start" aria-label="Video" href={video.downloadUrl}>
-            <MusicVideoIcon />
-          </IconButton>
-        )}
-        {audio && (
-          <IconButton component="a" edge="end" aria-label="Audio" href={audio.downloadUrl}>
-            <AudiotrackIcon />
-          </IconButton>
-        )}
-      </ListItemSecondaryAction>
+      {video && (
+        <IconButton color="secondary" component="a" edge="start" aria-label="Video" href={video.downloadUrl}>
+          <MusicVideoIcon />
+        </IconButton>
+      )}
+      {audio && (
+        <IconButton color="primary" component="a" edge="end" aria-label="Audio" href={audio.downloadUrl}>
+          <AudiotrackIcon />
+        </IconButton>
+      )}
     </ListItem>
     <Divider variant="inset" component="li" />
     </>
@@ -98,9 +97,9 @@ function SetsList(props: IProps) {
   return (
     <div className={classes.root}>
       <List component="nav">
-      {props.items.map((item, i) => {
-        return (<SetItem item={item} key={item.guid} />)
-      })}
+      {props.items.map((item, i) => (
+        <SetItem item={item} key={item.guid} />
+      ))}
       </List>
     </div>
   );
