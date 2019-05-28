@@ -15,18 +15,17 @@ class MyDocument extends Document {
           <title>{appTitle}</title>
           <meta name="Description" content={metaDescription} />
           <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      		<link rel="mask-icon" href="/safari-pinned-tab.svg?v=ngGBw47L8y" color={theme.palette.primary.main} />
       		<meta name="apple-mobile-web-app-title" content={appTitle} />
       		<meta name="application-name" content={appTitle} />
           <link rel="manifest" href="/static/manifest/manifest.json" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           
           
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="manifest" href="/site.webmanifest" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#950000" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+          <link rel="manifest" href="/static/site.webmanifest" />
+          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color={theme.palette.primary.main} />
           <meta name="msapplication-TileColor" content="#b91d47" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
