@@ -1,6 +1,6 @@
 {
 	"name": "ihoplyr",
-	"short_name": "Short name for Icon and Task",
+	"short_name": "ihoplyr",
 	"icons": [
 		{
 			"src": "/static/manifest/icons/icon-192x192.png",
@@ -17,5 +17,5 @@
 	"display": "minimal-ui",
 	"orientation": "natural",
 	"background_color": "#FFFFFF",
-	"theme_color": "#FFFFFF"
+	"theme_color": "#950000"
 }

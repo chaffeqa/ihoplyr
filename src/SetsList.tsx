@@ -95,13 +95,11 @@ function SetsList(props: IProps) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} component="ol">
-      <List component="nav">
+    <List className={classes.root} component="ol">
       {props.items.map((item, i) => (
         <SetItem item={item} key={item.guid} />
       ))}
-      </List>
-    </div>
+    </List>
   );
 }
 

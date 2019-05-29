@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import {IPayload} from "../src/types.d"
 import SetsList from '../src/SetsList';
-import Titlebar from '../src/Titlebar';
+// import Titlebar from '../src/Titlebar';
 import LoadingBar from '../src/LoadingBar';
 import { withRouter } from 'next/router';
 import useAbortableFetch from 'use-abortable-fetch';
@@ -39,13 +39,13 @@ function Index(props: any) {
   // console.dir(payload)
   // const title = guid ? `Item: ${guid}` : `Recent Playlists`
   return (
-    <Container>
+    <>
       {(loading) && (
         <LoadingBar />
       )}
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" component="main">
         {/*<Titlebar title={title} /> */}
-        <Box>
+        <Box component="section">
           {payload && (
             <SetsList items={payload.entries} />
           )}
@@ -54,7 +54,7 @@ function Index(props: any) {
           )}
         </Box>
       </Container>
-    </Container>
+    </>
   );
 }
 

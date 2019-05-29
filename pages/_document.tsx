@@ -12,9 +12,8 @@ class MyDocument extends Document {
       <html lang="en" dir="ltr">
         <Head>
           <meta charSet="utf-8" />
-          <title>{appTitle}</title>
-          <meta name="Description" content={metaDescription} />
           <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+          <meta name="Description" content={metaDescription} />
       		<meta name="apple-mobile-web-app-title" content={appTitle} />
       		<meta name="application-name" content={appTitle} />
           <link rel="manifest" href="/static/manifest/manifest.json" />
@@ -42,7 +41,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <noscript>Setlists require javascript to load.</noscript>
+          <noscript>Setlists requires javascript to load.</noscript>
         </body>
       </html>
     );
