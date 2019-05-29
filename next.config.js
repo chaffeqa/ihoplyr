@@ -35,7 +35,6 @@ const workboxOpts = {
       handler: 'CacheFirst',
       options: {
         cacheName: 'remote-https-calls',
-        networkTimeoutSeconds: 30,
         expiration: {
           maxEntries: 150,
           maxAgeSeconds: 15 * 60, // 15 minutes
