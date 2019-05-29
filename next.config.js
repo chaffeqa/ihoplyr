@@ -7,6 +7,9 @@ const manifest = {
   name: 'ihoplyr',
   short_name: 'ihoplyr',
   display: 'minimal-ui',
+  theme_color: "#950000",
+  orientation: "natural",
+  display: "minimal-ui",
   icons: {
     src: resolve(process.cwd(), './assets/icon.png'),
     cache: true
