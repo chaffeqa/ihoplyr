@@ -6,7 +6,10 @@ const withSerwist = require('@serwist/next').default({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Ensure we don't need 'target: serverless' anymore as it's deprecated/default behavior mostly.
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = withSerwist(nextConfig);
