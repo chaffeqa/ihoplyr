@@ -44,3 +44,10 @@ This file documents key architectural decisions, configuration quirks, and migra
 - **Configuration**: Uses `vercel.json` (replacing `now.json`) to set headers for `/sw.js`.
 - **Node Version**: The project is set to Node 25.2.1. Ensure the Vercel project settings are configured to use the latest available Node version (or override in Vercel settings if native support isn't there yet).
 - **Command**: Vercel should automatically detect Next.js. Ensure the Build Command is `next build --webpack` (which is the default `npm run build` script).
+
+## CI/CD
+- **Typechecking**: A GitHub Actions workflow (`.github/workflows/ci.yml`) runs `npm run typecheck` (`tsc --noEmit`) on every push and PR to `master`.
+- **Scripts**:
+  - `dev`: Starts dev server (webpack).
+  - `build`: Builds for production (webpack).
+  - `typecheck`: Runs TypeScript compiler check.
