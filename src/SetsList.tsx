@@ -11,7 +11,7 @@ import AudiotrackIcon from '@mui/icons-material/Audiotrack';
 import MusicVideoIcon from '@mui/icons-material/MusicVideo';
 // import DraftsIcon from '@mui/icons-material/Drafts';
 // import {NextComposed} from '../src/Link';
-import { IEntriesItem } from '../src/types.d';
+import { ISardiusHit } from '../src/types.d';
 import IconButton from '@mui/material/IconButton';
 // import MuiLink from '@mui/material/Link';
 
@@ -29,45 +29,24 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IProps {
-  items: IEntriesItem[]
+  items: ISardiusHit[]
 }
 interface ISubProps {
-  item: IEntriesItem
+  item: ISardiusHit
 }
 
-function getSecondary(item: IEntriesItem) {
+function getSecondary(item: ISardiusHit) {
   const secondary = [] as string[]
-  if (item['ihopkc$worshipLeader'] && item['ihopkc$worshipLeader'].length) {
-    secondary.push(item['ihopkc$worshipLeader'][0])
-  }
-  if (item['ihopkc$setType'].length) {
-    secondary.push(item['ihopkc$setType'][0])
+  if (item.bios && item.bios.worshipLeaders && item.bios.worshipLeaders.length) {
+    secondary.push(item.bios.worshipLeaders[0])
   }
   return secondary
 }
-function getVideo(item: IEntriesItem) {
-  return item.content.find((c) => c.contentType === "video")
-}
-function getAudio(item: IEntriesItem) {
-  return item.content.find((c) => c.contentType === "audio")
-}
 
-// function SetItemLnk({item}: ISubProps) {
-//   return (
-//     <>
-//     <ListItem button component={NextComposed} href={`/set?guid=${item.guid}`}>
-//       <ListItemText
-//         primary={item.title}
-//         secondary={getSecondary(item)}
-//       />
-//     </ListItem>
-//     <Divider variant="inset" component="li" />
-//     </>
-//   )
-// }
 function SetItem({ item }: ISubProps) {
-  const audio = getAudio(item)
-  const video = getVideo(item)
+  const videoUrl = item.media && item.media.url
+  const audioUrl = videoUrl ? videoUrl.replace("playlist.m3u8", "playlist-gpraudio.m3u8") : null
+
   return (
     <>
       <ListItem disableGutters={true}>
@@ -76,13 +55,13 @@ function SetItem({ item }: ISubProps) {
           secondary={getSecondary(item).join(" - ")}
           secondaryTypographyProps={{ variant: 'body2', noWrap: true }}
         />
-        {video && (
-          <IconButton color="secondary" component="a" edge="start" aria-label="Video" rel="noopenter" href={video.downloadUrl}>
+        {videoUrl && (
+          <IconButton color="secondary" component="a" edge="start" aria-label="Video" rel="noopenter" href={videoUrl}>
             <MusicVideoIcon />
           </IconButton>
         )}
-        {audio && (
-          <IconButton color="primary" component="a" edge="end" aria-label="Audio" rel="noopenter" href={audio.downloadUrl}>
+        {audioUrl && (
+          <IconButton color="primary" component="a" edge="end" aria-label="Audio" rel="noopenter" href={audioUrl}>
             <AudiotrackIcon />
           </IconButton>
         )}
@@ -98,7 +77,7 @@ function SetsList(props: IProps) {
   return (
     <List className={classes.root} component="ol">
       {props.items.map((item) => (
-        <SetItem item={item} key={item.guid} />
+        <SetItem item={item} key={item.id} />
       ))}
     </List>
   );

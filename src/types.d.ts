@@ -1,3 +1,33 @@
+export interface ISardiusPayload {
+    total: number;
+    hits: ISardiusHit[];
+}
+
+export interface ISardiusHit {
+    id: string;
+    title: string;
+    airDate: string;
+    media: ISardiusMedia;
+    bios: ISardiusBios;
+    files: ISardiusFile[];
+}
+
+export interface ISardiusMedia {
+    url: string;
+    mimeType: string;
+}
+
+export interface ISardiusBios {
+    worshipLeaders: string[];
+}
+
+export interface ISardiusFile {
+    url: string;
+    isDefault?: boolean;
+    mimeType: string;
+}
+
+// Legacy types (kept for reference or gradual migration if needed, but likely replaced)
 export interface IPayload {
     $xmlns: $xmlns;
     totalResults: number;

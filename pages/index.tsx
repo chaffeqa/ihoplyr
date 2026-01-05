@@ -2,7 +2,7 @@
 import Container from '@mui/material/Container';
 // import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { IPayload } from "../src/types.d"
+import { ISardiusPayload } from "../src/types.d"
 import SetsList from '../src/SetsList';
 // import Titlebar from '../src/Titlebar';
 import LoadingBar from '../src/LoadingBar';
@@ -12,21 +12,17 @@ import useAbortableFetch from 'use-abortable-fetch';
 
 
 
-const perPage = 20
+// const perPage = 20
 
-function Index(props: any) {
-  // console.log('props')
-  // console.dir(props)
-  const guid = props.router.query.guid
-  // const guid = '190525_TPR_1600'
-  const params = guid ? `byguid=${guid}` : `q=&range=0-${perPage}&=&sort=pubDate|desc&count=true`
-  const url = `https://feed.theplatform.com/f/IfSiAC/5ct7EYhhJs9Z/?${params}`;
+function Index() {
+  // const guid = props.router.query.guid // routing logic might need update if guid format changed, but assuming list view first
+  const url = `https://api.sardius.media/feeds/-K6FGrVYzVr92SDZiDnc/fdf257CfD1/public?count=12&sort=airDate:desc`;
   const fetchAction = useAbortableFetch(url);
-  let payload = null as IPayload | null
+  let payload = null as ISardiusPayload | null
   let error = fetchAction.error as Error | null
   const { loading, data } = fetchAction
   try {
-    payload = data && typeof (data) === 'string' && JSON.parse(data) || data as IPayload | null
+    payload = data && typeof (data) === 'string' && JSON.parse(data) || data as ISardiusPayload | null
   } catch (err) {
     error = err as Error
   }
@@ -41,7 +37,7 @@ function Index(props: any) {
         {/*<Titlebar title={title} /> */}
         <Box component="section">
           {payload && (
-            <SetsList items={payload.entries} />
+            <SetsList items={payload.hits} />
           )}
           {error && (
             <pre>{error.message}</pre>
