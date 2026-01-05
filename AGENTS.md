@@ -4,7 +4,7 @@ This file documents key architectural decisions, configuration quirks, and migra
 
 ## Tech Stack
 - **Framework**: Next.js 16+ (App Router is NOT used; standard `pages/` directory).
-- **Language**: TypeScript (Node 25.2.1).
+- **Language**: TypeScript (Node 24.5.0).
 - **UI Library**: MUI v5 (migrated from v4).
 - **PWA**: `@serwist/next` (migrated from `next-offline` / `next-manifest`).
 - **Data Fetching**: `use-abortable-fetch` (legacy pattern).
@@ -42,7 +42,7 @@ This file documents key architectural decisions, configuration quirks, and migra
 
 ## Deployment (Vercel)
 - **Configuration**: Uses `vercel.json` (replacing `now.json`) to set headers for `/sw.js`.
-- **Node Version**: The project is set to Node 25.2.1. Ensure the Vercel project settings are configured to use the latest available Node version (or override in Vercel settings if native support isn't there yet).
+- **Node Version**: The project is set to Node 24.5.0. Ensure the Vercel project settings are configured to use the latest available Node version (or override in Vercel settings if native support isn't there yet).
 - **Command**: Vercel should automatically detect Next.js. Ensure the Build Command is `next build --webpack` (which is the default `npm run build` script).
 
 ## CI/CD
