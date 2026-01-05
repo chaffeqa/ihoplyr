@@ -39,3 +39,8 @@ This file documents key architectural decisions, configuration quirks, and migra
 ## Common Pitfalls
 - **React Imports**: With React 17+ JSX transform, `import React from 'react'` is no longer needed for JSX.
 - **Link Component**: `src/Link.tsx` wraps `next/link` to work with MUI. Note that `next/link` no longer accepts a child `<a>` tag (since Next.js 13).
+
+## Deployment (Vercel)
+- **Configuration**: Uses `vercel.json` (replacing `now.json`) to set headers for `/sw.js`.
+- **Node Version**: The project is set to Node 25.2.1. Ensure the Vercel project settings are configured to use the latest available Node version (or override in Vercel settings if native support isn't there yet).
+- **Command**: Vercel should automatically detect Next.js. Ensure the Build Command is `next build --webpack` (which is the default `npm run build` script).
