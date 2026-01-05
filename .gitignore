@@ -16,3 +16,11 @@ yarn-error.log*
 
 # Next.js
 /.next
+
+# Generated Service Worker
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+
+# TypeScript
+*.tsbuildinfo
