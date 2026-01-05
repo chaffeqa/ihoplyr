@@ -17,7 +17,11 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content={appTitle} />
           <meta name="application-name" content={appTitle} />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color={theme.palette.primary.main} />
+          <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color={theme.palette.primary.main} />
           <meta name="msapplication-TileColor" content="#b91d47" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
