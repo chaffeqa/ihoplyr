@@ -2,7 +2,7 @@
 import { defaultCache } from "@serwist/next/worker";
 import type { PrecacheEntry } from "@serwist/precaching";
 import { installSerwist } from "@serwist/sw";
-import { CacheFirst, NetworkFirst } from "@serwist/strategies";
+import { CacheFirst, NetworkFirst, StaleWhileRevalidate } from "@serwist/strategies";
 import { ExpirationPlugin } from "@serwist/expiration";
 
 declare global {
@@ -20,6 +20,24 @@ installSerwist({
     navigationPreload: true,
     runtimeCaching: [
         ...defaultCache,
+        {
+            matcher: /^https:\/\/fonts\.googleapis\.com\/.*/,
+            handler: new StaleWhileRevalidate({
+                cacheName: 'google-fonts-stylesheets',
+            }),
+        },
+        {
+            matcher: /^https:\/\/fonts\.gstatic\.com\/.*/,
+            handler: new CacheFirst({
+                cacheName: 'google-fonts-webfonts',
+                plugins: [
+                    new ExpirationPlugin({
+                        maxEntries: 30,
+                        maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+                    }),
+                ],
+            }),
+        },
         {
             matcher: /^https:\/\/feed\.theplatform\.com.*/,
             handler: new CacheFirst({

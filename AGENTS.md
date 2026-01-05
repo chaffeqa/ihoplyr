@@ -7,6 +7,12 @@ This file documents key architectural decisions, configuration quirks, and migra
 - **Language**: TypeScript (Node 24.5.0).
 - **UI Library**: MUI v5 (migrated from v4).
 - **PWA**: `@serwist/next` (migrated from `next-offline` / `next-manifest`).
+  - **Caching**:
+    - Runtime caching configured in `src/sw.ts`.
+    - Includes specific strategies for:
+      - API feeds from `feed.theplatform.com`
+      - Google Fonts (`googleapis.com` stylesheets, `gstatic.com` webfonts)
+      - Generic HTTPS fallback
 - **Data Fetching**: `use-abortable-fetch` (legacy pattern).
 
 ## Key Configurations & Learnings
