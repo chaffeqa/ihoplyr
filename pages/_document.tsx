@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/styles';
-import flush from 'styled-jsx/server';
+import { ServerStyleSheets } from '@mui/styles';
+
 import theme from '../src/theme';
 const appTitle = 'ihoplyr'
 const metaDescription = `iHop KC setlist archives app`
@@ -14,16 +14,9 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
           <meta name="Description" content={metaDescription} />
-      		<meta name="apple-mobile-web-app-title" content={appTitle} />
-      		<meta name="application-name" content={appTitle} />
-          <link rel="manifest" href="/static/manifest/manifest.json" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          
-          
-          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
-          <link rel="manifest" href="/static/site.webmanifest" />
+          <meta name="apple-mobile-web-app-title" content={appTitle} />
+          <meta name="application-name" content={appTitle} />
+          <link rel="manifest" href="/manifest.json" />
           <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color={theme.palette.primary.main} />
           <meta name="msapplication-TileColor" content="#b91d47" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
@@ -46,7 +39,7 @@ class MyDocument extends Document {
       </html>
     );
   }
-  
+
   static async getInitialProps(ctx: any) {
     // Resolution order
     //
@@ -76,7 +69,7 @@ class MyDocument extends Document {
 
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: App => props => sheets.collect(<App {...props} />),
+        enhanceApp: (App: any) => (props: any) => sheets.collect(<App {...props} />),
       });
 
     const initialProps = await Document.getInitialProps(ctx);
@@ -87,7 +80,6 @@ class MyDocument extends Document {
       styles: (
         <React.Fragment>
           {sheets.getStyleElement()}
-          {flush() || null}
         </React.Fragment>
       ),
     };

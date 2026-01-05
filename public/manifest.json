@@ -1,0 +1,19 @@
+{
+    "name": "ihoplyr",
+    "short_name": "ihoplyr",
+    "display": "minimal-ui",
+    "theme_color": "#950000",
+    "orientation": "natural",
+    "icons": [
+        {
+            "src": "/assets/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

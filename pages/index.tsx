@@ -1,22 +1,16 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-// import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import {IPayload} from "../src/types.d"
+
+import Container from '@mui/material/Container';
+// import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { IPayload } from "../src/types.d"
 import SetsList from '../src/SetsList';
 // import Titlebar from '../src/Titlebar';
 import LoadingBar from '../src/LoadingBar';
 import { withRouter } from 'next/router';
 import useAbortableFetch from 'use-abortable-fetch';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-  }),
-);
+
+
 
 const perPage = 20
 
@@ -30,11 +24,11 @@ function Index(props: any) {
   const fetchAction = useAbortableFetch(url);
   let payload = null as IPayload | null
   let error = fetchAction.error as Error | null
-  const {loading, abort, data} = fetchAction
+  const { loading, data } = fetchAction
   try {
-    payload = data && typeof(data) === 'string' && JSON.parse(data) || data as IPayload | null
+    payload = data && typeof (data) === 'string' && JSON.parse(data) || data as IPayload | null
   } catch (err) {
-    error = err
+    error = err as Error
   }
   // console.dir(payload)
   // const title = guid ? `Item: ${guid}` : `Recent Playlists`

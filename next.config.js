@@ -1,65 +1,12 @@
-const withTypescript = require('@zeit/next-typescript')
-const withOffline = require('next-offline')
-const withManifest = require('next-manifest');
-const { resolve } = require('path');
+const withSerwist = require('@serwist/next').default({
+  swSrc: 'src/sw.ts',
+  swDest: 'public/sw.js',
+});
 
-const manifest = {
-  name: 'ihoplyr',
-  short_name: 'ihoplyr',
-  display: 'minimal-ui',
-  theme_color: "#950000",
-  orientation: "natural",
-  display: "minimal-ui",
-  icons: {
-    src: resolve(process.cwd(), './assets/icon.png'),
-    cache: true
-  }
-}
-const workboxOpts = {
-  swDest: 'static/service-worker.js',
-  runtimeCaching: [
-    {
-      urlPattern: /^https?.*/,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'https-calls',
-        networkTimeoutSeconds: 15,
-        expiration: {
-          maxEntries: 150,
-          maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
-        },
-        cacheableResponse: {
-          statuses: [0, 200],
-        },
-      },
-    },
-    {
-      urlPattern: /^https:\/\/feed\.theplatform\.com*/,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'remote-https-calls',
-        expiration: {
-          maxEntries: 150,
-          maxAgeSeconds: 15 * 60, // 15 minutes
-        },
-        cacheableResponse: {
-          statuses: [0, 200],
-        },
-      },
-    },
-  ],
-}
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  workboxOpts: workboxOpts,
-  manifest: manifest,
-}
+  reactStrictMode: true,
+  // Ensure we don't need 'target: serverless' anymore as it's deprecated/default behavior mostly.
+};
 
-
-const config = withOffline(
-  withManifest(
-    withTypescript(nextConfig)
-  )
-)
-// config.target = 'serverless'
-module.exports = config
+module.exports = withSerwist(nextConfig);

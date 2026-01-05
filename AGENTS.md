@@ -1,0 +1,41 @@
+# Project Setup & Context for Agents
+
+This file documents key architectural decisions, configuration quirks, and migration history to help future agents understand the codebase.
+
+## Tech Stack
+- **Framework**: Next.js 16+ (App Router is NOT used; standard `pages/` directory).
+- **Language**: TypeScript (Node 25.2.1).
+- **UI Library**: MUI v5 (migrated from v4).
+- **PWA**: `@serwist/next` (migrated from `next-offline` / `next-manifest`).
+- **Data Fetching**: `use-abortable-fetch` (legacy pattern).
+
+## Key Configurations & Learnings
+
+### 1. Build System (Webpack vs Turbopack)
+> [!IMPORTANT]
+> **Use `--webpack`**: The project MUST be built and run using the `--webpack` flag (`next build --webpack`, `next dev --webpack`).
+> The `@serwist/next` plugin is currently incompatible with Next.js Turbopack (the default in v15+).
+
+### 2. PWA & Service Worker
+- **Library**: We use `@serwist/next` for offline support.
+- **Service Worker file**: Located at `src/sw.ts`. It uses a strategy-based approach (NetworkFirst, CacheFirst) rather than simple config objects.
+- **Manifest**: Located at `public/manifest.json`.
+- **Note**: The legacy `next-offline` and `next-manifest` packages were removed.
+
+### 3. MUI v5 Migration Limits
+- **Styling**: We use a mix of `@mui/styles` (legacy JSS `makeStyles`) and `@mui/material`.
+- **Theme**: The theme is defined in `src/theme.tsx`. Note that MUI v5 renamed `overrides` to `components` -> `MuiComponent` -> `styleOverrides`.
+- **Legacy Imports**: Imports were migrated from `@material-ui/core` to `@mui/material` and `@material-ui/styles` to `@mui/styles`.
+
+### 4. Next.js Config
+- **.babelrc**: This file was REMOVED to allow Next.js to use its internal SWC compiler, which is required for modern builds. Do not re-introduce it unless strictly necessary.
+- **styled-jsx**: Explicitly installed to support legacy styles in `_document.tsx` (though `flush()` usage was removed as it's handled automatically now).
+
+### 5. Project Structure
+- `pages/`: standard Next.js pages.
+- `src/`: Components, theme, service worker, and types.
+- `public/`: Static assets (images, manifest).
+
+## Common Pitfalls
+- **React Imports**: With React 17+ JSX transform, `import React from 'react'` is no longer needed for JSX.
+- **Link Component**: `src/Link.tsx` wraps `next/link` to work with MUI. Note that `next/link` no longer accepts a child `<a>` tag (since Next.js 13).

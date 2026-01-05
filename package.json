@@ -4,32 +4,39 @@
   "liscence": "MIT",
   "private": true,
   "engines": {
-    "node": ">= 12.3.1",
-    "yarn": ">= 1.16.0"
+    "node": "25.2.1"
   },
   "dependencies": {
-    "@material-ui/core": "^4.0.1",
-    "@material-ui/icons": "^4.0.1",
-    "@material-ui/styles": "^4.0.1",
-    "@pwa/manifest": "^1.1.0",
-    "@pwa/manifest-icons": "^3.1.0",
-    "@types/next": "^8.0.5",
-    "@zeit/next-typescript": "^1.1.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@mui/styles": "^6.5.0",
+    "@serwist/expiration": "^9.4.2",
+    "@serwist/next": "latest",
+    "@serwist/precaching": "latest",
+    "@serwist/strategies": "^9.4.2",
+    "@serwist/sw": "latest",
     "clsx": "^1.0.2",
-    "next": "^8.1.0",
-    "next-manifest": "^2.0.0",
-    "next-offline": "^4.0.1",
+    "next": "latest",
     "prop-types": "^15.7.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "latest",
+    "react-dom": "latest",
     "use-abortable-fetch": "^2.6.3",
     "use-abortable-stream-fetch": "^0.0.3"
   },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/styled-jsx": "^2.2.9",
+    "styled-jsx": "^5.1.7",
+    "typescript": "latest"
+  },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "now-build": "next build && next export -o dist",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
-    "now-dev": "next -p $PORT"
+    "lint": "next lint"
   }
 }

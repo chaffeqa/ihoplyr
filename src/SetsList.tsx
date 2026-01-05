@@ -1,18 +1,19 @@
-import React from 'react';
-// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import AudiotrackIcon from '@material-ui/icons/Audiotrack';
-import MusicVideoIcon from '@material-ui/icons/MusicVideo';
-// import DraftsIcon from '@material-ui/icons/Drafts';
+
+// import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import { Theme } from '@mui/material/styles';
+import { createStyles, makeStyles } from '@mui/styles';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+// import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+import MusicVideoIcon from '@mui/icons-material/MusicVideo';
+// import DraftsIcon from '@mui/icons-material/Drafts';
 // import {NextComposed} from '../src/Link';
-import {IEntriesItem} from '../src/types.d';
-import IconButton from '@material-ui/core/IconButton';
-// import MuiLink from '@material-ui/core/Link';
+import { IEntriesItem } from '../src/types.d';
+import IconButton from '@mui/material/IconButton';
+// import MuiLink from '@mui/material/Link';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.background.paper,
     },
     item: {
-      
+
     }
   }),
 );
@@ -64,29 +65,29 @@ function getAudio(item: IEntriesItem) {
 //     </>
 //   )
 // }
-function SetItem({item}: ISubProps) {
+function SetItem({ item }: ISubProps) {
   const audio = getAudio(item)
   const video = getVideo(item)
   return (
     <>
-    <ListItem disableGutters={true}>
-      <ListItemText
-        primary={item.title}
-        secondary={getSecondary(item).join(" - ")}
-        secondaryTypographyProps={{variant: 'body2', noWrap: true}}
-      />
-      {video && (
-        <IconButton color="secondary" component="a" edge="start" aria-label="Video" rel="noopenter" href={video.downloadUrl}>
-          <MusicVideoIcon />
-        </IconButton>
-      )}
-      {audio && (
-        <IconButton color="primary" component="a" edge="end" aria-label="Audio" rel="noopenter" href={audio.downloadUrl}>
-          <AudiotrackIcon />
-        </IconButton>
-      )}
-    </ListItem>
-    <Divider variant="inset" component="li" />
+      <ListItem disableGutters={true}>
+        <ListItemText
+          primary={item.title}
+          secondary={getSecondary(item).join(" - ")}
+          secondaryTypographyProps={{ variant: 'body2', noWrap: true }}
+        />
+        {video && (
+          <IconButton color="secondary" component="a" edge="start" aria-label="Video" rel="noopenter" href={video.downloadUrl}>
+            <MusicVideoIcon />
+          </IconButton>
+        )}
+        {audio && (
+          <IconButton color="primary" component="a" edge="end" aria-label="Audio" rel="noopenter" href={audio.downloadUrl}>
+            <AudiotrackIcon />
+          </IconButton>
+        )}
+      </ListItem>
+      <Divider variant="inset" component="li" />
     </>
   )
 }
@@ -96,7 +97,7 @@ function SetsList(props: IProps) {
 
   return (
     <List className={classes.root} component="ol">
-      {props.items.map((item, i) => (
+      {props.items.map((item) => (
         <SetItem item={item} key={item.guid} />
       ))}
     </List>
